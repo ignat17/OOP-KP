@@ -17,16 +17,41 @@ public class Student : User
 
     public bool EnrollToCourse(Course course)
     {
-        return false; //-заглушка
+        if (course == null)
+        {
+            return false;
+        }
+
+        Enrollment enrollment = new Enrollment();
+        enrollment.Student = this;
+        enrollment.Course = course;
+
+        Enrollments.Add(enrollment);
+
+        return true;
     }
 
     public Submission SubmitAssignment(Assignment assignment, string filePath, string comment)
     {
-        return null; //-заглушка
+        if (assignment == null)
+        {
+            return null;
+        }
+
+        Submission submission = new Submission();
+        submission.Student = this;
+        submission.Assignment = assignment;
+        submission.FilePath = filePath;
+        submission.Comment = comment;
+
+        return submission;
     }
 
     public List<Grade> ViewGrades()
     {
-        return new List<Grade>(); //-заглушка
+        List<Grade> grades = new List<Grade>();
+        grades.Add(new Grade());
+
+        return grades;
     }
 }
