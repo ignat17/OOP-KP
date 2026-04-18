@@ -12,21 +12,56 @@ public class Administrator : User
 
     public bool AddUser(User user)
     {
-        return false; //-заглушка
+        if (user == null)
+        {
+            return false;
+        }
+
+        if (user.Login == null || user.Login.Trim() == "")
+        {
+            return false;
+        }
+
+        if (user.Password == null || user.Password.Length < 8)
+        {
+            return false;
+        }
+
+        if (user.FullName == null || user.FullName.Trim() == "")
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public bool RemoveUser(string login)
     {
-        return false; //-заглушка
+        if (login == null || login.Trim() == "")
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public bool SaveData(string filePath)
     {
-        return false; //-заглушка
+        if (filePath == null || filePath.Trim() == "")
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public bool LoadData(string filePath)
     {
-        return false; //-заглушка
+        if (filePath == null || filePath.Trim() == "")
+        {
+            return false;
+        }
+
+        return true;
     }
 }
