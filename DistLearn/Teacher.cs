@@ -17,21 +17,50 @@ public class Teacher : User
 
     public Course CreateCourse(string title, string description)
     {
-        return null; //-заглушка
+        if (title == null || title.Trim() == "")
+        {
+            return null;
+        }
+
+        Course course = new Course();
+        course.Title = title;
+        course.Description = description;
+        course.Teacher = this;
+
+        Courses.Add(course);
+
+        return course;
     }
 
     public bool AddMaterial(Course course, Material material)
     {
-        return false; //-заглушка
+        if (course == null || material == null)
+        {
+            return false;
+        }
+
+        course.Contents.Add(material);
+        return true;
     }
 
     public bool CreateAssignment(Course course, Assignment assignment)
     {
-        return false; //-заглушка
+        if (course == null || assignment == null)
+        {
+            return false;
+        }
+
+        course.Contents.Add(assignment);
+        return true;
     }
 
     public bool GradeSubmission(Submission submission, Grade grade)
     {
-        return false; //-заглушка
+        if (submission == null || grade == null)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
