@@ -13,6 +13,6 @@ public class EnrollmentTests
 
         bool result = enrollment.IsActive();
 
-        Assert.IsTrue(result);
+        Assert.IsFalse(result);
     }
 }

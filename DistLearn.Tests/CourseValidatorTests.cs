@@ -7,10 +7,14 @@ namespace DistLearn.Tests;
 public class CourseValidatorTests
 {
     [TestMethod]
-    public void ValidateCourse_EmptyCourse_ReturnsTrue()
+    public void ValidateCourse_ValidCourse_ReturnsTrue()
     {
         CourseValidator validator = new CourseValidator();
         Course course = new Course();
+        Teacher teacher = new Teacher();
+
+        course.Title = "OOP";
+        course.Teacher = teacher;
 
         bool result = validator.ValidateCourse(course);
 

@@ -7,10 +7,15 @@ namespace DistLearn.Tests;
 public class UserValidatorTests
 {
     [TestMethod]
-    public void ValidateUser_EmptyStudent_ReturnsTrue()
+    public void ValidateUser_ValidStudent_ReturnsTrue()
     {
         UserValidator validator = new UserValidator();
         Student student = new Student();
+
+        student.Login = "student1";
+        student.Password = "12345678";
+        student.FullName = "Ivan Ivanov";
+        student.Role = "Student";
 
         bool result = validator.ValidateUser(student);
 

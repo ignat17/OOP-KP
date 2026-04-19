@@ -34,6 +34,11 @@ public class Course : IComparable<Course>
             return false;
         }
 
+        if (content.Title == null || content.Title.Trim() == "")
+        {
+            return false;
+        }
+
         Contents.Add(content);
         return true;
     }
@@ -52,7 +57,7 @@ public class Course : IComparable<Course>
         return false;
     }
 
-    public int CompareTo(Course? other)
+    public int CompareTo(Course other)
     {
         if (other == null)
         {

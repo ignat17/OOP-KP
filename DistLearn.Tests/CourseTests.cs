@@ -25,7 +25,7 @@ public class CourseTests
 
         bool result = course.RemoveContent("Unknown");
 
-        Assert.IsTrue(result);
+        Assert.IsFalse(result);
     }
 
     [TestMethod]
@@ -35,6 +35,6 @@ public class CourseTests
 
         int result = course.GetStudentsCount();
 
-        Assert.IsTrue(result > 0);
+        Assert.AreEqual(0, result);
     }
 }

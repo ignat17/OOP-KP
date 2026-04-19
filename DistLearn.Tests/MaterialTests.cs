@@ -7,13 +7,13 @@ namespace DistLearn.Tests;
 public class MaterialTests
 {
     [TestMethod]
-    public void GetInfo_EmptyTitle_ReturnsEmptyString()
+    public void GetInfo_EmptyTitle_ReturnsMaterialText()
     {
         Material material = new Material();
         material.Title = "";
 
         string result = material.GetInfo();
 
-        Assert.AreEqual("", result);
+        Assert.AreEqual("Material: ", result);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DistLearn;
+using System.IO;
 
 namespace DistLearn.Tests;
 
@@ -10,8 +11,14 @@ public class JsonDataStorageTests
     public void Save_ValidPath_ReturnsTrue()
     {
         JsonDataStorage storage = new JsonDataStorage();
+        string filePath = "save_test.json";
 
-        bool result = storage.Save("data.json", new object());
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+
+        bool result = storage.Save(filePath, new {Name = "Test"});
 
         Assert.IsTrue(result);
     }
@@ -20,8 +27,15 @@ public class JsonDataStorageTests
     public void Load_ValidPath_ReturnsObject()
     {
         JsonDataStorage storage = new JsonDataStorage();
+        string filePath = "load_test.json";
 
-        object result = storage.Load("data.json");
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+
+        storage.Save(filePath, new {Name = "Test"});
+        object result = storage.Load(filePath);
 
         Assert.IsNotNull(result);
     }

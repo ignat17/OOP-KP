@@ -7,12 +7,12 @@ namespace DistLearn.Tests;
 public class NotificationTests
 {
     [TestMethod]
-    public void MarkAsRead_AfterCall_IsStillFalse()
+    public void MarkAsRead_AfterCall_IsTrue()
     {
         Notification notification = new Notification();
 
         notification.MarkAsRead();
 
-        Assert.IsFalse(notification.IsRead);
+        Assert.IsTrue(notification.IsRead);
     }
 }
