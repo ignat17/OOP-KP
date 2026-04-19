@@ -17,11 +17,23 @@ public class Grade
 
     public bool SetScore(int value)
     {
-        return false; //-заглушка
+        if (value < 0)
+        {
+            return false;
+        }
+
+        Score = value;
+        GradedAt = DateTime.Now;
+        return true;
     }
 
     public void AddComment(string comment)
     {
-        //-заглушка
+        if (comment == null)
+        {
+            return;
+        }
+
+        TeacherComment = comment;
     }
 }
