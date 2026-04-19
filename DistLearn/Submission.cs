@@ -26,16 +26,40 @@ public class Submission
 
     public bool Send()
     {
-        return false; //-заглушка
+        if ((FilePath == null || FilePath.Trim() == "") &&
+            (Comment == null || Comment.Trim() == ""))
+        {
+            return false;
+        }
+
+        Status = "Submitted";
+        SubmittedAt = DateTime.Now;
+        return true;
     }
 
     public bool UpdateComment(string newComment)
     {
-        return false; //-заглушка
+        if (newComment == null || newComment.Trim() == "")
+        {
+            return false;
+        }
+
+        Comment = newComment;
+        return true;
     }
 
     public bool IsLate()
     {
-        return false; //-заглушка
+        if (Assignment == null)
+        {
+            return false;
+        }
+
+        if (SubmittedAt > Assignment.Deadline)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

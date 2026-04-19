@@ -10,6 +10,7 @@ public class SubmissionTests
     public void Send_ValidSubmission_ReturnsTrue()
     {
         Submission submission = new Submission();
+        submission.FilePath = "answer.txt";
 
         bool result = submission.Send();
 
@@ -29,7 +30,12 @@ public class SubmissionTests
     [TestMethod]
     public void IsLate_LateSubmission_ReturnsTrue()
     {
+        Assignment assignment = new Assignment();
+        assignment.Deadline = DateTime.Now.AddDays(-1);
+
         Submission submission = new Submission();
+        submission.Assignment = assignment;
+        submission.SubmittedAt = DateTime.Now;
 
         bool result = submission.IsLate();
 
