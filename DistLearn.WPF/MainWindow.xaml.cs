@@ -78,7 +78,13 @@ public partial class MainWindow : Window
 
     private void LoginBtn_Click(object sender, RoutedEventArgs e)
     {
-        MessageBox.Show("Форму входу зробимо далі.");
+        LoginWindow loginWindow = new LoginWindow();
+        loginWindow.ShowDialog();
+
+        if (AppData.CurrentUser != null)
+        {
+            MessageBox.Show("Ви увійшли як: " + AppData.CurrentUser.FullName);
+        }
     }
 
     private void RegBtn_Click(object sender, RoutedEventArgs e)
