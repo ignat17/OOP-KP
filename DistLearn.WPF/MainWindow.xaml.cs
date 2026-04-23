@@ -89,6 +89,8 @@ public partial class MainWindow : Window
 
     private void RegBtn_Click(object sender, RoutedEventArgs e)
     {
-        MessageBox.Show("Форму реєстрації зробимо далі.");
+        RegisterWindow registerWindow = new RegisterWindow();
+        registerWindow.Owner = this;
+        registerWindow.ShowDialog();
     }
 }
