@@ -79,11 +79,31 @@ public partial class MainWindow : Window
     private void LoginBtn_Click(object sender, RoutedEventArgs e)
     {
         LoginWindow loginWindow = new LoginWindow();
+        loginWindow.Owner = this;
         loginWindow.ShowDialog();
 
-        if (AppData.CurrentUser != null)
+        if (AppData.CurrentUser == null)
         {
-            MessageBox.Show("Ви увійшли як: " + AppData.CurrentUser.FullName);
+            return;
+        }
+
+        Student student = AppData.CurrentUser as Student;
+
+        if (student != null)
+        {
+            this.Hide();
+
+            StudentWindow studentWindow = new StudentWindow();
+            studentWindow.Owner = this;
+            studentWindow.ShowDialog();
+
+            this.Show();
+            AppData.CurrentUser = null;
+        }
+        else
+        {
+            MessageBox.Show("не готово");
+            AppData.CurrentUser = null;
         }
     }
 
