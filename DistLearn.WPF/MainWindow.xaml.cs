@@ -99,6 +99,7 @@ public partial class MainWindow : Window
 
         Student student = AppData.CurrentUser as Student;
         Teacher teacher = AppData.CurrentUser as Teacher;
+        Administrator admin = AppData.CurrentUser as Administrator;
 
         if (student != null)
         {
@@ -124,9 +125,16 @@ public partial class MainWindow : Window
             LoadCourses();
             AppData.CurrentUser = null;
         }
-        else
+        else if (admin != null)
         {
-            MessageBox.Show("не готово");
+            this.Hide();
+
+            AdminWindow adminWindow = new AdminWindow();
+            adminWindow.Owner = this;
+            adminWindow.ShowDialog();
+
+            this.Show();
+            LoadCourses();
             AppData.CurrentUser = null;
         }
     }

@@ -56,7 +56,8 @@
                     Padding="15"
                     Margin="0,0,12,0">
 
-                <StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="0,0,10,0">
                     <TextBlock Text="Мої курси"
                                Foreground="White"
                                FontSize="20"
@@ -137,6 +138,7 @@
                     </Border>
 
                     <Button x:Name="CreateCourseBtn"
+                            HorizontalAlignment="Left"
                             Content="Створити курс"
                             Width="140"
                             Height="38"
@@ -145,7 +147,48 @@
                             Foreground="White"
                             BorderBrush="#2563EB"
                             Click="CreateCourseBtn_Click"/>
+
+                    <TextBlock Text="Логін студента"
+                               FontSize="15"
+                               Foreground="#CBD5E1"
+                               FontWeight="Bold"
+                               Margin="0,10,0,6"/>
+
+                    <Border Background="#1E293B"
+                            BorderBrush="#334155"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Margin="0,0,0,12">
+                        <TextBox x:Name="StudentLoginBox"
+                                 Height="38"
+                                 Background="Transparent"
+                                 Foreground="White"
+                                 BorderThickness="0"
+                                 Padding="10"/>
+                    </Border>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                        <Button x:Name="AddStudentBtn"
+                                Content="Додати студента"
+                                Width="150"
+                                Height="38"
+                                Margin="0,0,12,0"
+                                Background="#2563EB"
+                                Foreground="White"
+                                BorderBrush="#2563EB"
+                                Click="AddStudentBtn_Click"/>
+
+                        <Button x:Name="DeleteStudentBtn"
+                                Content="Видалити студента"
+                                Width="150"
+                                Height="38"
+                                Background="#111827"
+                                Foreground="White"
+                                BorderBrush="#374151"
+                                Click="DeleteStudentBtn_Click"/>
+                    </StackPanel>
                 </StackPanel>
+                </ScrollViewer>
             </Border>
 
             <Border Grid.Column="1"

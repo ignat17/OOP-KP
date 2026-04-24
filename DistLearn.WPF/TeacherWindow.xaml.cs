@@ -313,6 +313,140 @@ namespace DistLearn.WPF
             }
         }
 
+        private void AddStudentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Course course = CoursesList.SelectedItem as Course;
+
+            if (course == null)
+            {
+                MessageBox.Show("Оберіть курс.");
+                return;
+            }
+
+            string login = StudentLoginBox.Text;
+
+            if (login == "")
+            {
+                MessageBox.Show("Введіть логін студента.");
+                return;
+            }
+
+            Student student = null;
+
+            for (int i = 0; i < AppData.Users.Count; i++)
+            {
+                student = AppData.Users[i] as Student;
+
+                if (student != null && student.Login == login)
+                {
+                    break;
+                }
+
+                student = null;
+            }
+
+            if (student == null)
+            {
+                MessageBox.Show("Студента не знайдено.");
+                return;
+            }
+
+            for (int i = 0; i < course.Enrollments.Count; i++)
+            {
+                if (course.Enrollments[i].Student != null &&
+                    course.Enrollments[i].Student.Login == student.Login)
+                {
+                    MessageBox.Show("Студент уже є на курсі.");
+                    return;
+                }
+            }
+
+            student.EnrollToCourse(course);
+
+            if (student.Enrollments.Count > 0)
+            {
+                Enrollment enrollment = student.Enrollments[student.Enrollments.Count - 1];
+                course.Enrollments.Add(enrollment);
+            }
+
+            StudentLoginBox.Text = "";
+            ShowCourseInfo(course);
+
+            MessageBox.Show("Студента додано.");
+        }
+
+        private void DeleteStudentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Course course = CoursesList.SelectedItem as Course;
+
+            if (course == null)
+            {
+                MessageBox.Show("Оберіть курс.");
+                return;
+            }
+
+            string login = StudentLoginBox.Text;
+
+            if (login == "")
+            {
+                MessageBox.Show("Введіть логін студента.");
+                return;
+            }
+
+            Student student = null;
+
+            for (int i = 0; i < AppData.Users.Count; i++)
+            {
+                student = AppData.Users[i] as Student;
+
+                if (student != null && student.Login == login)
+                {
+                    break;
+                }
+
+                student = null;
+            }
+
+            if (student == null)
+            {
+                MessageBox.Show("Студента не знайдено.");
+                return;
+            }
+
+            bool deleted = false;
+
+            for (int i = 0; i < course.Enrollments.Count; i++)
+            {
+                if (course.Enrollments[i].Student != null &&
+                    course.Enrollments[i].Student.Login == student.Login)
+                {
+                    course.Enrollments.RemoveAt(i);
+                    deleted = true;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < student.Enrollments.Count; i++)
+            {
+                if (student.Enrollments[i].Course != null &&
+                    student.Enrollments[i].Course.Title == course.Title)
+                {
+                    student.Enrollments.RemoveAt(i);
+                    break;
+                }
+            }
+
+            if (!deleted)
+            {
+                MessageBox.Show("Цього студента немає на курсі.");
+                return;
+            }
+
+            StudentLoginBox.Text = "";
+            ShowCourseInfo(course);
+
+            MessageBox.Show("Студента видалено.");
+        }
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             AppData.CurrentUser = null;
