@@ -12,11 +12,21 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         AppData.Initialize();
-        CoursesList.ItemsSource = AppData.Courses;
+        LoadCourses();
 
-        if (AppData.Courses.Count > 0)
+        if (CoursesList.Items.Count > 0)
         {
             CoursesList.SelectedIndex = 0;
+        }
+    }
+
+    private void LoadCourses()
+    {
+        CoursesList.Items.Clear();
+
+        for (int i = 0; i < AppData.Courses.Count; i++)
+        {
+            CoursesList.Items.Add(AppData.Courses[i]);
         }
     }
 
@@ -88,6 +98,7 @@ public partial class MainWindow : Window
         }
 
         Student student = AppData.CurrentUser as Student;
+        Teacher teacher = AppData.CurrentUser as Teacher;
 
         if (student != null)
         {
@@ -98,6 +109,19 @@ public partial class MainWindow : Window
             studentWindow.ShowDialog();
 
             this.Show();
+            LoadCourses();
+            AppData.CurrentUser = null;
+        }
+        else if (teacher != null)
+        {
+            this.Hide();
+
+            TeacherWindow teacherWindow = new TeacherWindow();
+            teacherWindow.Owner = this;
+            teacherWindow.ShowDialog();
+
+            this.Show();
+            LoadCourses();
             AppData.CurrentUser = null;
         }
         else

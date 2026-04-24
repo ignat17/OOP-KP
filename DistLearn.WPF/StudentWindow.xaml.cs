@@ -87,7 +87,7 @@ namespace DistLearn.WPF
             }
 
             MaterialsList.Items.Clear();
-            TasksList.Items.Clear();
+            AssignmentsList.Items.Clear();
 
             for (int i = 0; i < course.Contents.Count; i++)
             {
@@ -102,7 +102,7 @@ namespace DistLearn.WPF
                 if (content is Assignment)
                 {
                     Assignment assignment = (Assignment)content;
-                    TasksList.Items.Add(assignment.Title + " (до " + assignment.Deadline.ToShortDateString() + ")");
+                    AssignmentsList.Items.Add(assignment.Title + " (до " + assignment.Deadline.ToShortDateString() + ")");
                 }
             }
 
@@ -111,9 +111,9 @@ namespace DistLearn.WPF
                 MaterialsList.Items.Add("Матеріали відсутні");
             }
 
-            if (TasksList.Items.Count == 0)
+            if (AssignmentsList.Items.Count == 0)
             {
-                TasksList.Items.Add("Завдання відсутні");
+                AssignmentsList.Items.Add("Завдання відсутні");
             }
         }
 
@@ -124,7 +124,7 @@ namespace DistLearn.WPF
             TeacherText.Text = "";
 
             MaterialsList.Items.Clear();
-            TasksList.Items.Clear();
+            AssignmentsList.Items.Clear();
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)

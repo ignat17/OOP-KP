@@ -138,8 +138,8 @@
                                    FontSize="15"
                                    Foreground="#CBD5E1"
                                    FontWeight="Bold"/>
-                        
-                        <ListBox x:Name="TasksList"
+
+                        <ListBox x:Name="AssignmentsList"
                                  FontSize="15"
                                  Height="110"
                                  Background="#1E293B"
