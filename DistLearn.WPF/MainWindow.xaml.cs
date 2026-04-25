@@ -68,22 +68,9 @@ public partial class MainWindow : Window
             return;
         }
 
-        string teacherName;
-
-        if (course.Teacher != null)
-        {
-            teacherName = course.Teacher.FullName;
-        }
-        else
-        {
-            teacherName = "Не вказано";
-        }
-
-        MessageBox.Show(
-            "Назва: " + course.Title + "\n\n" +
-            "Опис: " + course.Description + "\n\n" +
-            "Викладач: " + teacherName,
-            "Курс");
+        CourseWindow courseWindow = new CourseWindow(course);
+        courseWindow.Owner = this;
+        courseWindow.ShowDialog();
     }
 
     private void LoginBtn_Click(object sender, RoutedEventArgs e)

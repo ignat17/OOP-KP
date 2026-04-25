@@ -62,8 +62,8 @@
                     CornerRadius="10"
                     Padding="15"
                     Margin="0,0,12,0">
-
-                <StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="0,0,10,0">
                     <TextBlock Text="Курси"
                                Foreground="White"
                                FontSize="20"
@@ -120,9 +120,9 @@
                                                 CornerRadius="8"
                                                 Background="#2563EB"
                                                 VerticalAlignment="Top">
-                                            <TextBlock Text="▥"
+                                            <TextBlock Text="{Binding Icon}"
                                                        FontSize="16"
-                                                       Foreground="Black"
+                                                       Foreground="White"
                                                        HorizontalAlignment="Center"
                                                        VerticalAlignment="Center"/>
                                         </Border>
@@ -161,6 +161,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
+                </ScrollViewer>
             </Border>
 
             <Border Grid.Column="1"

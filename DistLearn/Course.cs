@@ -12,6 +12,8 @@ public class Course : IComparable<Course>
 
     public Teacher Teacher {get; set;}
 
+    public string Icon {get; set;}
+
     public List<CourseContent> Contents {get; set;}
 
     public List<Enrollment> Enrollments {get; set;}
