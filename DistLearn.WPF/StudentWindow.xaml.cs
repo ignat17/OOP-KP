@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using DistLearn;
 using DistLearn.WPF.Data;
+using System.Windows.Input;
 
 namespace DistLearn.WPF
 {
@@ -127,6 +128,71 @@ namespace DistLearn.WPF
             AssignmentsList.Items.Clear();
         }
 
+        private void MaterialsList_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Course course = CoursesList.SelectedItem as Course;
+
+            if (course == null)
+            {
+                return;
+            }
+
+            string materialTitle = MaterialsList.SelectedItem as string;
+
+            if (materialTitle == null || materialTitle == "Матеріали відсутні")
+            {
+                return;
+            }
+
+            for (int i = 0; i < course.Contents.Count; i++)
+            {
+                Material material = course.Contents[i] as Material;
+
+                if (material != null)
+                {
+                    if (material.Title == materialTitle)
+                    {
+                        MaterialWindow window = new MaterialWindow(material);
+                        window.Owner = this;
+                        window.ShowDialog();
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void AssignmentsList_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Course course = CoursesList.SelectedItem as Course;
+
+            if (course == null)
+            {
+                return;
+            }
+
+            string assignmentText = AssignmentsList.SelectedItem as string;
+
+            if (assignmentText == null || assignmentText == "Завдання відсутні")
+            {
+                return;
+            }
+
+            for (int i = 0; i < course.Contents.Count; i++)
+            {
+                Assignment assignment = course.Contents[i] as Assignment;
+
+                if (assignment != null)
+                {
+                    if (assignmentText.StartsWith(assignment.Title))
+                    {
+                        AssignmentWindow window = new AssignmentWindow(assignment);
+                        window.Owner = this;
+                        window.ShowDialog();
+                        break;
+                    }
+                }
+            }
+        }
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             AppData.CurrentUser = null;

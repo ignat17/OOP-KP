@@ -1,13 +1,14 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
+using DistLearn.WPF.Data;
 
-namespace DistLearn.WPF;
-
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
-public partial class App : Application
+namespace DistLearn.WPF
 {
+    public partial class App : Application
+    {
+        protected override void OnExit(ExitEventArgs e)
+        {
+            AppStorage.Save();
+            base.OnExit(e);
+        }
+    }
 }
-

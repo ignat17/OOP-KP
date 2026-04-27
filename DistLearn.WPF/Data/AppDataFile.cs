@@ -9,6 +9,7 @@ namespace DistLearn.WPF.Data
         public List<TeacherFile> Teachers {get; set;} = new List<TeacherFile>();
         public List<StudentFile> Students {get; set;} = new List<StudentFile>();
         public List<CourseFile> Courses {get; set;} = new List<CourseFile>();
+        public List<SubmissionFile> Submissions {get; set;} = new List<SubmissionFile>();
     }
 
     public class AdminFile
@@ -42,6 +43,7 @@ namespace DistLearn.WPF.Data
         public List<string>StudentLogins{get; set;} = new List<string>();
         public List<MaterialFile>Materials{get; set;} = new List<MaterialFile>();
         public List<AssignmentFile>Assignments{get; set;} = new List<AssignmentFile>();
+        public string Icon {get; set;}
     }
 
     public class MaterialFile
@@ -60,5 +62,15 @@ namespace DistLearn.WPF.Data
         public string Instructions {get; set;}
         public int MaxScore {get; set;}
         public DateTime Deadline {get; set;}
+    }
+
+    public class SubmissionFile
+    {
+        public string StudentLogin {get; set;}
+        public string CourseTitle {get; set;}
+        public string AssignmentTitle {get; set;}
+        public string FilePath {get; set;}
+        public string Comment {get; set;}
+        public string Status {get; set;}
     }
 }

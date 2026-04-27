@@ -132,7 +132,8 @@
                                  Foreground="White"
                                  BorderBrush="#334155"
                                  BorderThickness="1"
-                                 Margin="0,5,0,15"/>
+                                 Margin="0,5,0,15"
+                                 MouseDoubleClick="MaterialsList_DoubleClick"/>
 
                         <TextBlock Text="Завдання:"
                                    FontSize="15"
@@ -146,7 +147,8 @@
                                  Foreground="White"
                                  BorderBrush="#334155"
                                  BorderThickness="1"
-                                 Margin="0,5,0,0"/>
+                                 Margin="0,5,0,0"
+                                 MouseDoubleClick="AssignmentsList_DoubleClick"/>
                     </StackPanel>
                 </ScrollViewer>
             </Border>

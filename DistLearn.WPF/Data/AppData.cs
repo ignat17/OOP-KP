@@ -8,6 +8,7 @@ public static class AppData
 {
     public static List<User> Users {get;} = new();
     public static List<Course> Courses {get;} = new();
+    public static List<Submission> Submissions {get;} = new();
 
     public static User CurrentUser {get; set;}
 
@@ -17,6 +18,17 @@ public static class AppData
         {
             return;
         }
+
+        if (AppStorage.Load())
+        {
+            return;
+        }
+
+        LoadDemoData();
+    }
+
+    private static void LoadDemoData()
+    {
 
         Administrator admin = new Administrator();
         admin.Login = "admin";
