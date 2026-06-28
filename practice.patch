@@ -1,0 +1,9 @@
+diff --git a/git-practice-notes.md b/git-practice-notes.md
+index fec568a..0416f9e 100644
+--- a/git-practice-notes.md
++++ b/git-practice-notes.md
+@@ -2,3 +2,4 @@
+ This file was created during introductory practice.
+ Temporary change for git stash practice.
+ Cherry-pick practice line.
++Patch practice line.
